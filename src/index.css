@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+
+input {
+  @apply rounded bg-white text-black p-2 border-none w-80 outline-none focus:ring-3 focus:ring-blue-500 
+}
+
+.todo-input-item {
+  @apply flex flex-col items-start mr-6
+}
+
+.todo-input-item label {
+  @apply font-bold mb-2.5 text-[18px]
+}
+
+.secondary-btn {
+  @apply text-white  border-none mt-9 p-2.5 w-fit cursor-pointer text-center 
+}
+
+/* button {
+  @apply bg-amber-50 text-black
+} */
+ /* bg-gray-500 */
+
+
+
