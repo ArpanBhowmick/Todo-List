@@ -1,8 +1,12 @@
 @import "tailwindcss";
 
 
+body {
+  @apply bg-[#1f1e1e] text-white overflow-hidden
+}
+
 input {
-  @apply rounded bg-white text-black p-2 border-none w-80 outline-none focus:ring-3 focus:ring-blue-500 
+  @apply rounded-none bg-white text-black p-2.5 border-none w-64 outline-none focus:ring-3 focus:ring-blue-500 
 }
 
 .todo-input-item {
@@ -14,8 +18,13 @@ input {
 }
 
 .secondary-btn {
-  @apply text-white  border-none mt-9 p-2.5 w-fit cursor-pointer text-center 
+  @apply text-white  border-none mt-6 p-2.5 w-fit cursor-pointer text-center 
 }
+
+/* .icons {
+  @apply text-4xl cursor-pointer
+} */
+
 
 /* button {
   @apply bg-amber-50 text-black
