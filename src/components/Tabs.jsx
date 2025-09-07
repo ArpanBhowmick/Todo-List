@@ -1,21 +1,27 @@
+import { useContext } from "react";
+import { TodoContext } from "../store/TodoContext";
 
 
-const Tabs = ({activeTab, setActiveTab}) => {
+const Tabs = () => {
+
+
+  const { todoList, dispatchTodoList } = useContext(TodoContext);
+
   return (
     <div className="mb-4">
       <button
         className={`secondary-btn ${
-          activeTab === false ? "bg-green-600" : "bg-[rgb(71,71,71)]"
+          todoList === false ? "bg-green-600" : "bg-[rgb(71,71,71)]"
         }`}
-        onClick={() => setActiveTab(false)}
+        onClick={() => dispatchTodoList({ type: "SET_TODO_TAB" })}
       >
         Todo
       </button>
       <button
         className={`secondary-btn ${
-          activeTab === true ? "bg-green-600" : "bg-[rgb(71,71,71)]"
+          todoList === true ? "bg-green-600" : "bg-[rgb(71,71,71)]"
         }`}
-        onClick={() => setActiveTab(true)}
+        onClick={() => dispatchTodoList({ type: "SET_COMPLETED_TAB" })}
       >
         completed
       </button>

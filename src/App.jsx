@@ -1,30 +1,34 @@
-import { useReducer, useState } from "react";
+import { useContext, useState } from "react";
 import "./App.css";
 
 import TodoInputs from "./components/TodoInputs";
 import Tabs from "./components/Tabs";
 import TodoItem from "./components/TodoItem";
+import TodoListProvider from "./store/TodoContext";
+
 
 function App() {
-  const [activeTab, setActiveTab] = useState(false);
+  // const [activeTab, setActiveTab] = useState(false);
 
-  const[] = useReducer()
+  
+  
 
   return (
-    <div>
-      <h1 className="mt-10 text-center text-5xl h-20 font-bold">My Todos</h1>
+    <TodoListProvider>
+      <div>
+        <h1 className="mt-10 text-center text-5xl h-20 font-bold">My Todos</h1>
 
-      {/* wrapper */}
+        {/* wrapper */}
 
-      <div className="bg-[#353434] p-[2%] w-fit ml-auto mr-auto mt-[] max-h-[80vh] overflow-y-auto shadow-[0px_5px_7px_black] h-100">
-        <TodoInputs></TodoInputs>
+        <div className="bg-[#353434] p-[2%] w-fit ml-auto mr-auto mt-[] max-h-[80vh] overflow-y-auto shadow-[0px_5px_7px_black] h-100">
+          <TodoInputs></TodoInputs>
 
-        <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+          <Tabs />
 
-        <TodoItem/>
-       
+          <TodoItem />
+        </div>
       </div>
-    </div>
+    </TodoListProvider>
   );
 }
 
