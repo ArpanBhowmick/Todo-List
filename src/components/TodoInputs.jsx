@@ -18,6 +18,9 @@ const TodoInputs = () => {
 
     addTodo(todoTitle, todoDescription)
 
+    todoTitleElement.current.value = " ";
+     todoDescriptionElement.current.value = " ";
+
   }
 
   
@@ -48,7 +51,7 @@ const TodoInputs = () => {
         <div className="todo-input-item">
           <button
             type="button"
-            className="bg-green-600 text-white rounded-none border-none mt-9 p-2.5 w-15 cursor-pointer hover:bg-green-700" onClick={handleTodoAdd}
+            className="bg-green-600 text-white rounded-none border-none mt-9 p-2.5 w-15 cursor-pointer hover:bg-green-700" onClick={ handleTodoAdd}
           >
             Add
           </button>

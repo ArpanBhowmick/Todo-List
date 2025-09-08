@@ -5,6 +5,7 @@ import TodoInputs from "./components/TodoInputs";
 import Tabs from "./components/Tabs";
 import TodoItem from "./components/TodoItem";
 import TodoListProvider from "./store/TodoContext";
+import TodoList from "./components/TodoList";
 
 
 function App() {
@@ -20,12 +21,12 @@ function App() {
 
         {/* wrapper */}
 
-        <div className="bg-[#353434] p-[2%] w-fit ml-auto mr-auto mt-[] max-h-[80vh] overflow-y-auto shadow-[0px_5px_7px_black] h-100">
+        <div className="bg-[#353434] p-[2%] w-fit ml-auto mr-auto mt-[] max-h-[80vh] overflow-y-auto shadow-[0px_5px_7px_black] h-auto">
           <TodoInputs></TodoInputs>
 
           <Tabs />
 
-          <TodoItem />
+          <TodoList></TodoList>
         </div>
       </div>
     </TodoListProvider>

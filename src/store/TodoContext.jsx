@@ -1,9 +1,22 @@
 import { createContext, useReducer } from "react"
-import { createContext, useReducer } from "react"
 
 
 
-    export const TodoContext = createContext({})
+    export const TodoContext = createContext({
+        todoList: [],
+        addTodo: () => {},
+        deleteTodo: () => {},
+        toggleComplete: () => {}
+    })
+
+    // const initialState = {
+    //      todoList: [],
+    //      showCompletedTab: false,
+    // }
+
+
+
+
 
     
     const todoListReducer = (currentTodoList, action) => {
@@ -11,7 +24,11 @@ import { createContext, useReducer } from "react"
         let newTodoList = currentTodoList;
 
         if (action.type === "ADD_TODO") {
-            newTodoList = [action.payload ,...currentTodoList]
+            newTodoList = [ ...currentTodoList, action.payload]
+        } else if (action.type === "DELETE_TODO") {
+            newTodoList = currentTodoList.filter((todo) => todo.id !== action.payload )
+        } else if (action.type === "TOGGLE_TODO") {
+            newTodoList = 
         }
 
         // if (action.type === "SET_TODO_TAB") {
@@ -19,13 +36,11 @@ import { createContext, useReducer } from "react"
         // } else if (action.type === "SET_COMPLETED_TAB") {
         //     return true
         // }
-        // return currentTodoList
+        return newTodoList
 
 
 
     }
-
-
 
 
 
@@ -36,6 +51,7 @@ import { createContext, useReducer } from "react"
 
 
         const addTodo = (todoTitle, todoDescription) => {
+            console.log("clicked")
             dispatchTodoList({
                 type: "ADD_TODO",
                 payload: {
@@ -47,10 +63,24 @@ import { createContext, useReducer } from "react"
             })
         }
 
+        const deleteTodo = (todoId) => {
+            dispatchTodoList({
+                type: "DELETE_TODO",
+                payload: todoId
+            })
+        }
+
+        const toggleComplete = (todoId) => {
+            dispatchTodoList({
+                type: "TOGGLE_TODO",
+                payload: todoId
+            })
+        }
+
 
 
         return (
-          <TodoContext.Provider value={{ todoList, addTodo }}>
+          <TodoContext.Provider value={{ todoList, dispatchTodoList, addTodo, deleteTodo, toggleComplete  }}>
             {children}
           </TodoContext.Provider>
         );
@@ -71,7 +101,6 @@ export default TodoListProvider
     
 
 
-    
 
 
 
