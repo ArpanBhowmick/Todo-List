@@ -4,10 +4,10 @@ import TodoItem from "./TodoItem";
 
 const TodoList = () => {
   const { todoList } = useContext(TodoContext);
+//   console.log("TodoList:", todoList)
 
   return (
     <>
-      
       {todoList.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
