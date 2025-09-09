@@ -27,9 +27,7 @@ import { createContext, useReducer } from "react"
             newTodoList = [ ...currentTodoList, action.payload]
         } else if (action.type === "DELETE_TODO") {
             newTodoList = currentTodoList.filter((todo) => todo.id !== action.payload )
-        } else if (action.type === "TOGGLE_TODO") {
-            newTodoList = 
-        }
+        } 
 
         // if (action.type === "SET_TODO_TAB") {
         //     return false ;
