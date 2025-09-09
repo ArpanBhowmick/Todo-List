@@ -5,7 +5,7 @@ import { TodoContext } from "../store/TodoContext";
 const Tabs = () => {
 
 
-  const { todoList, dispatchTodoList } = useContext(TodoContext);
+  const { setTab } = useContext(TodoContext);
 
   return (
     <div className="mb-4">

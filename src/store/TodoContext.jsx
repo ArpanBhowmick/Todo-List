@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createContext, useReducer } from "react"
 
 
@@ -9,14 +10,17 @@ import { createContext, useReducer } from "react"
         toggleComplete: () => {}
     })
 
-    // const initialState = {
-    //      todoList: [],
-    //      showCompletedTab: false,
-    // }
+
+    // --------------- Initial State ---------------
+    
+    const initialState = {
+         todoList: [],
+         showCompletedTab: false,
+    }
 
 
 
-
+// -------------------- Reducer -------------------
 
     
     const todoListReducer = (currentTodoList, action) => {
@@ -24,12 +28,16 @@ import { createContext, useReducer } from "react"
         let newTodoList = currentTodoList;
 
         if (action.type === "ADD_TODO") {
-            newTodoList = [ ...currentTodoList, action.payload]
+            newTodoList = {...currentTodoList, todoList: [ ...currentTodoList.todoList, action.payload]}
         } else if (action.type === "DELETE_TODO") {
-            newTodoList = currentTodoList.filter((todo) => todo.id !== action.payload )
-        } else if (action.type === "TOGGLE_TODO") {
-            newTodoList = 
+            newTodoList = {...currentTodoList, todoList: currentTodoList.todoList.filter((todo) => todo.id !== action.payload )} 
         }
+        // } else if (action.type === "LOAD_TODOS") {
+            // newTodoList = action.payload;
+       
+        //  else if (action.type === "TOGGLE_TODO") {
+        //     newTodoList = 
+        // }
 
         // if (action.type === "SET_TODO_TAB") {
         //     return false ;
@@ -43,16 +51,35 @@ import { createContext, useReducer } from "react"
     }
 
 
+// ---------------- Init Function (loads from localStorage) -----------
+
+      const init = () => {
+         const localData = localStorage.getItem("todos")
+
+         return localData ? { ...initialState, todoList: JSON.parse(localData)} : initialState  
+
+    }
+
+
+    // -------------------- Provider --------------------
 
     const TodoListProvider = ({children}) => {
         
-        const[todoList, dispatchTodoList] = useReducer(todoListReducer, [])
+        const[todoState, dispatchTodoState] = useReducer(todoListReducer, initialState, init)
 
 
+          //----- save todos to localStorage whenever they change-----
+
+        useEffect(() => {
+            localStorage.setItem("todos" , JSON.stringify(todoState.todoList))
+        }, [todoState.todoList])
+        
+
+  // --- Actions ---
 
         const addTodo = (todoTitle, todoDescription) => {
             console.log("clicked")
-            dispatchTodoList({
+            dispatchTodoState({
                 type: "ADD_TODO",
                 payload: {
                     id: Date.now(),
@@ -64,23 +91,29 @@ import { createContext, useReducer } from "react"
         }
 
         const deleteTodo = (todoId) => {
-            dispatchTodoList({
+            dispatchTodoState({
                 type: "DELETE_TODO",
                 payload: todoId
             })
         }
 
         const toggleComplete = (todoId) => {
-            dispatchTodoList({
+            dispatchTodoState({
                 type: "TOGGLE_TODO",
                 payload: todoId
+            })
+        }
+
+        const setTab = () => {
+            dispatchTodoState({
+
             })
         }
 
 
 
         return (
-          <TodoContext.Provider value={{ todoList, dispatchTodoList, addTodo, deleteTodo, toggleComplete  }}>
+          <TodoContext.Provider value={{ todoList: todoState.todoList, addTodo, deleteTodo, toggleComplete, setTab  }}>
             {children}
           </TodoContext.Provider>
         );
