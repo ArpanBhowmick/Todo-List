@@ -1,19 +1,13 @@
-import { useContext, useState } from "react";
 import "./App.css";
 
 import TodoInputs from "./components/TodoInputs";
 import Tabs from "./components/Tabs";
-import TodoItem from "./components/TodoItem";
+
 import TodoListProvider from "./store/TodoContext";
 import TodoList from "./components/TodoList";
-
+import { Toaster } from "sonner";
 
 function App() {
-  // const [activeTab, setActiveTab] = useState(false);
-
-  
-  
-
   return (
     <TodoListProvider>
       <div>
@@ -21,7 +15,7 @@ function App() {
 
         {/* wrapper */}
 
-        <div className="bg-[#353434] p-[2%] w-fit ml-auto mr-auto mt-[] max-h-[80vh] overflow-y-auto shadow-[0px_5px_7px_black] h-auto">
+        <div className="bg-[#353434] p-[2%] w-fit ml-auto mr-auto  max-h-[80vh] overflow-y-auto shadow-[0px_5px_7px_black] h-auto">
           <TodoInputs></TodoInputs>
 
           <Tabs />
@@ -29,6 +23,7 @@ function App() {
           <TodoList></TodoList>
         </div>
       </div>
+      <Toaster position="top-center" richColors />
     </TodoListProvider>
   );
 }

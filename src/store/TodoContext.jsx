@@ -23,7 +23,7 @@ const todoListReducer = (currentTodoList, action) => {
   if (action.type === "ADD_TODO") {
     newTodoList = {
       ...currentTodoList,
-      todoList: [...currentTodoList.todoList, action.payload],
+      todoList: [action.payload, ...currentTodoList.todoList],
     };
   } else if (action.type === "DELETE_TODO") {
     newTodoList = {

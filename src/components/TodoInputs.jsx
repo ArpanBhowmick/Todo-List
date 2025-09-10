@@ -1,5 +1,6 @@
 import { useContext, useRef } from "react"
 import { TodoContext } from "../store/TodoContext";
+import { toast } from "sonner";
 
 
 const TodoInputs = () => {
@@ -15,6 +16,12 @@ const TodoInputs = () => {
 
     const todoTitle = todoTitleElement.current.value;
     const todoDescription = todoDescriptionElement.current.value;
+
+
+    if (!todoTitle.trim() || !todoDescription.trim()) {
+      toast.error("Please write your TODOS in the columns");
+      return;
+    }
 
     addTodo(todoTitle, todoDescription)
 
