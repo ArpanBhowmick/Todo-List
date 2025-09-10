@@ -5,24 +5,24 @@ import { TodoContext } from "../store/TodoContext";
 const Tabs = () => {
 
 
-  const { todoList, dispatchTodoList } = useContext(TodoContext);
+  const { showCompletedTab, switchTodoTab, switchCompletedTab } = useContext(TodoContext);
 
   return (
     <div className="mb-4">
       <button
         className={`secondary-btn ${
-          todoList === false ? "bg-green-600" : "bg-[rgb(71,71,71)]"
+          showCompletedTab === false ? "bg-green-600" : "bg-[rgb(71,71,71)]"
         }`}
-        onClick={() => dispatchTodoList({ type: "SET_TODO_TAB" })}
+        onClick={switchTodoTab}
       >
         Todo
       </button>
-      
+
       <button
         className={`secondary-btn ${
-          todoList === true ? "bg-green-600" : "bg-[rgb(71,71,71)]"
+          showCompletedTab === true ? "bg-green-600" : "bg-[rgb(71,71,71)]"
         }`}
-        onClick={() => dispatchTodoList({ type: "SET_COMPLETED_TAB" })}
+        onClick={switchCompletedTab}
       >
         completed
       </button>
