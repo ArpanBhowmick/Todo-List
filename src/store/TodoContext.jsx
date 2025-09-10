@@ -37,16 +37,20 @@ const todoListReducer = (currentTodoList, action) => {
       ...currentTodoList,
       todoList: currentTodoList.todoList.map((todo) =>
         todo.id === action.payload
-          ? { ...todo, completed: !todo.completed }
+          ? {
+              ...todo,
+              completed: !todo.completed,
+              completedAt: !todo.completed ? new Date().toISOString() : null,
+            }
           : todo
       ),
     };
   } else if (action.type === "SWITCH_TODO_TAB") {
-      return {...currentTodoList, showCompletedTab: false } 
+    return { ...currentTodoList, showCompletedTab: false };
   } else if (action.type === "SWITCH_COMPLETED_TAB") {
-      return {...currentTodoList, showCompletedTab: true}
+    return { ...currentTodoList, showCompletedTab: true };
   }
- 
+
   return newTodoList;
 };
 
@@ -90,16 +94,12 @@ const TodoListProvider = ({ children }) => {
     });
   };
 
-
-
   const deleteTodo = (todoId) => {
     dispatchTodoState({
       type: "DELETE_TODO",
       payload: todoId,
     });
   };
-
-
 
   const toggleTodoStatus = (todoId) => {
     dispatchTodoState({
@@ -108,21 +108,17 @@ const TodoListProvider = ({ children }) => {
     });
   };
 
-
-
   const switchTodoTab = () => {
     dispatchTodoState({
-        type: "SWITCH_TODO_TAB",
+      type: "SWITCH_TODO_TAB",
     });
   };
 
-   const switchCompletedTab = () => {
-     dispatchTodoState({
-        type: "SWITCH_COMPLETED_TAB",
-     });
-   };
-
-
+  const switchCompletedTab = () => {
+    dispatchTodoState({
+      type: "SWITCH_COMPLETED_TAB",
+    });
+  };
 
   return (
     <TodoContext.Provider
