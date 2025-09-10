@@ -32,7 +32,7 @@ const todoListReducer = (currentTodoList, action) => {
         (todo) => todo.id !== action.payload
       ),
     };
-  } else if (action.type === "TOGGLE_TODO_STATE") {
+  } else if (action.type === "TOGGLE_TODO_STATUS") {
     newTodoList = {
       ...currentTodoList,
       todoList: currentTodoList.todoList.map((todo) =>
@@ -103,7 +103,7 @@ const TodoListProvider = ({ children }) => {
 
   const toggleTodoStatus = (todoId) => {
     dispatchTodoState({
-      type: "TOGGLE_TODO_STATE",
+      type: "TOGGLE_TODO_STATUS",
       payload: todoId,
     });
   };
@@ -121,7 +121,6 @@ const TodoListProvider = ({ children }) => {
         type: "SWITCH_COMPLETED_TAB",
      });
    };
-
 
 
 

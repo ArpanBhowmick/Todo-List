@@ -3,12 +3,18 @@ import { TodoContext } from "../store/TodoContext";
 import TodoItem from "./TodoItem";
 
 const TodoList = () => {
-  const { todoList } = useContext(TodoContext);
-//   console.log("TodoList:", todoList)
+  const { todoList , showCompletedTab } = useContext(TodoContext);
+
+  const visibleTodos = todoList.filter((todo) => todo.completed === showCompletedTab
+  )
+
+  if (visibleTodos.length === 0) {
+    return <p>No task here to do</p>
+  }
 
   return (
     <>
-      {todoList.map((todo) => (
+      {visibleTodos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
     </>

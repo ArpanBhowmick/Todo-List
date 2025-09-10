@@ -18,8 +18,8 @@ const TodoInputs = () => {
 
     addTodo(todoTitle, todoDescription)
 
-    todoTitleElement.current.value = " ";
-     todoDescriptionElement.current.value = " ";
+    todoTitleElement.current.value = "";
+     todoDescriptionElement.current.value = "";
 
   }
 
