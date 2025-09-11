@@ -34,6 +34,7 @@ const TodoInputs = () => {
 
   return (
     <>
+    <form onSubmit={ handleTodoAdd}>
       <div className="flex items-center justify-center border-b border-gray-700 pb-6 mb-2 ">
         <div className="todo-input-item">
           <label>Title</label>
@@ -41,6 +42,7 @@ const TodoInputs = () => {
             type="text"
             ref={todoTitleElement}
             placeholder="What's the task title"
+            className="h-10"
           />
         </div>
 
@@ -50,6 +52,7 @@ const TodoInputs = () => {
             type="text"
             ref={todoDescriptionElement}
             placeholder="What's the description"
+            className="h-10"
           />
         </div>
 
@@ -57,13 +60,14 @@ const TodoInputs = () => {
 
         <div className="todo-input-item">
           <button
-            type="button"
-            className="bg-green-600 text-white rounded-none border-none mt-9 p-2.5 w-15 cursor-pointer hover:bg-green-700" onClick={ handleTodoAdd}
+            type="submit"
+            className="bg-green-600 text-white rounded-none border-none mt-9 p-2.5 w-15 cursor-pointer hover:bg-green-700"
           >
             Add
           </button>
         </div>
       </div>
+      </form>
     </>
   );
 }

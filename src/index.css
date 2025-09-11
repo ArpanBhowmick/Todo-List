@@ -21,6 +21,10 @@ input {
   @apply text-white  border-none mt-6 p-2.5 w-fit cursor-pointer text-center 
 }
 
+.todo-wrapper {
+  @apply bg-[#353434] p-[2%] pb-5 w-fit ml-auto mr-auto  max-h-[80vh] overflow-y-auto shadow-[0px_5px_7px_black] h-auto
+}
+
 /* .icons {
   @apply text-4xl cursor-pointer
 } */

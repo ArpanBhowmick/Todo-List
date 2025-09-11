@@ -11,13 +11,12 @@ function App() {
   return (
     <TodoListProvider>
       <div>
-        <h1 className="mt-10 text-center text-5xl h-20 font-bold">My Todos</h1>
+        <h1 className="mt-6 text-center text-4xl h-20 font-bold">My Todos</h1>
 
         {/* wrapper */}
 
-        <div className="bg-[#353434] p-[2%] w-fit ml-auto mr-auto  max-h-[80vh] overflow-y-auto shadow-[0px_5px_7px_black] h-auto">
-          <TodoInputs></TodoInputs>
-
+        <div className="todo-wrapper">
+          <TodoInputs />
           <Tabs />
 
           <TodoList></TodoList>

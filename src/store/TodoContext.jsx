@@ -5,6 +5,7 @@ export const TodoContext = createContext({
   todoList: [],
   addTodo: () => {},
   deleteTodo: () => {},
+  editTodo: () => {},
   toggleTodoStatus: () => {},
 });
 
@@ -30,6 +31,19 @@ const todoListReducer = (currentTodoList, action) => {
       ...currentTodoList,
       todoList: currentTodoList.todoList.filter(
         (todo) => todo.id !== action.payload
+      ),
+    };
+  } else if (action.type === "EDIT_TODO") {
+    newTodoList = {
+      ...currentTodoList,
+      todoList: currentTodoList.todoList.map((todo) =>
+        todo.id === action.payload.id
+          ? {
+              ...todo,
+              title: action.payload.title,
+              description: action.payload.description,
+            }
+          : todo
       ),
     };
   } else if (action.type === "TOGGLE_TODO_STATUS") {
@@ -101,6 +115,17 @@ const TodoListProvider = ({ children }) => {
     });
   };
 
+  const editTodo = (id, newTitle, newDescription) => {
+    dispatchTodoState({
+      type: "EDIT_TODO",
+      payload: {
+        id,
+        title: newTitle,
+        description: newDescription,
+      }
+    });
+  };
+
   const toggleTodoStatus = (todoId) => {
     dispatchTodoState({
       type: "TOGGLE_TODO_STATUS",
@@ -127,6 +152,7 @@ const TodoListProvider = ({ children }) => {
         showCompletedTab: todoState.showCompletedTab,
         addTodo,
         deleteTodo,
+        editTodo,
         toggleTodoStatus,
         switchTodoTab,
         switchCompletedTab,
