@@ -13,15 +13,13 @@ function App() {
       <div>
         <h1 className="mt-6 text-center text-4xl h-20 font-bold">My Todos</h1>
 
-        {/* wrapper */}
-
         <div className="todo-wrapper">
           <TodoInputs />
           <Tabs />
-
-          <TodoList></TodoList>
+          <TodoList />
         </div>
       </div>
+
       <Toaster position="top-center" richColors />
     </TodoListProvider>
   );

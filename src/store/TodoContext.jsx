@@ -96,7 +96,6 @@ const TodoListProvider = ({ children }) => {
   // --- Actions ---
 
   const addTodo = (todoTitle, todoDescription) => {
-    console.log("clicked");
     dispatchTodoState({
       type: "ADD_TODO",
       payload: {
@@ -122,7 +121,7 @@ const TodoListProvider = ({ children }) => {
         id,
         title: newTitle,
         description: newDescription,
-      }
+      },
     });
   };
 

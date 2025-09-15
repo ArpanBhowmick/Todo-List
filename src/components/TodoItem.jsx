@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
-import { AiOutlineDelete, AiTwotoneEdit } from "react-icons/ai";
+import { AiOutlineDelete } from "react-icons/ai";
 import { BsCheckLg } from "react-icons/bs";
 import { TodoContext } from "../store/TodoContext";
 import { IoArrowUndoOutline, IoSaveOutline } from "react-icons/io5";
 import { MdCancel } from "react-icons/md";
-
+import { FaRegEdit } from "react-icons/fa";
 
 
 
@@ -22,17 +22,13 @@ const TodoItem = ({ todo }) => {
     <div className="flex flex-col shadow-[0px_3px_5px_rgb(0,0,0,0.5)] mb-2.5">
       <div className="bg-[#414040] flex p-6 pb-3.5 pt-2 justify-between items-center ">
         <div className=" mb-0 flex-1">
-          {/*           
-          <h1 className="font-bold text-green-500 text-2xl m-0 ">
-            {todo.title}
-          </h1>
-
-          <p className="text-sm text-gray-400 mt-0 pt-2">{todo.description}</p> */}
+     
 
           {editState.isEditing ? (
             <div className="flex flex-col">
               <input
                 type="text"
+                placeholder="Update task title..."
                 value={editState.title}
                 onChange={(e) =>
                   setEditState({ ...editState, title: e.target.value })
@@ -40,6 +36,7 @@ const TodoItem = ({ todo }) => {
                 className="mt-2.5 h-10 "
               />
               <textarea
+                placeholder="Update task details..."
                 value={editState.description}
                 onChange={(e) =>
                   setEditState({ ...editState, description: e.target.value })
@@ -104,13 +101,13 @@ const TodoItem = ({ todo }) => {
               />
             ) : (
               <IoArrowUndoOutline
-                className="text-4xl ml-2.5 cursor-pointer text-gray-400 hover:hover:text-gray-200"
+                className="text-4xl ml-2.5 cursor-pointer text-gray-400 hover:hover:text-gray-300"
                 onClick={() => toggleTodoStatus(todo.id)}
               />
             )}
 
-            <AiTwotoneEdit
-              className="text-4xl ml-2.5 cursor-pointer "
+            <FaRegEdit 
+              className="text-3xl mt-1 ml-3 cursor-pointer text-blue-400 hover:text-blue-500"
               onClick={() =>
                 setEditState({
                   isEditing: true,

@@ -3,13 +3,14 @@ import { TodoContext } from "../store/TodoContext";
 import TodoItem from "./TodoItem";
 
 const TodoList = () => {
-  const { todoList , showCompletedTab } = useContext(TodoContext);
+  const { todoList, showCompletedTab } = useContext(TodoContext);
 
-  const visibleTodos = todoList.filter((todo) => todo.completed === showCompletedTab
-  )
+  const visibleTodos = todoList.filter(
+    (todo) => todo.completed === showCompletedTab
+  );
 
   if (visibleTodos.length === 0) {
-    return <p>No task here to do</p>
+    return <p>No task here to do</p>;
   }
 
   return (

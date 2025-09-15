@@ -1,11 +1,9 @@
 import { useContext } from "react";
 import { TodoContext } from "../store/TodoContext";
 
-
 const Tabs = () => {
-
-
-  const { showCompletedTab, switchTodoTab, switchCompletedTab } = useContext(TodoContext);
+  const { showCompletedTab, switchTodoTab, switchCompletedTab } =
+    useContext(TodoContext);
 
   return (
     <div className="mb-4">
@@ -31,9 +29,3 @@ const Tabs = () => {
 };
 
 export default Tabs;
-
-
-
-
-
-
