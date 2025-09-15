@@ -6,7 +6,7 @@ body {
 }
 
 input {
-  @apply rounded-none bg-white text-black p-2.5 border-none w-64 outline-none focus:ring-3 focus:ring-blue-500 
+  @apply rounded-none bg-white text-black p-2.5 border-none w-full outline-none focus:ring-3 focus:ring-blue-500 
 }
 
 .todo-input-item {
