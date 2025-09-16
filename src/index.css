@@ -6,11 +6,11 @@ body {
 }
 
 input {
-  @apply rounded-none bg-white text-black p-2.5 border-none w-full outline-none focus:ring-3 focus:ring-blue-500 
+  @apply rounded-none bg-white text-black p-2.5 border-none w-full outline-none focus:ring-3 focus:ring-blue-500
 }
 
 .todo-input-item {
-  @apply flex flex-col items-start mr-6
+  @apply flex  flex-col items-start mr-6 
 }
 
 .todo-input-item label {
@@ -22,14 +22,15 @@ input {
 }
 
 .todo-wrapper {
-  @apply bg-[#353434] p-6 pb-5 w-full max-w-2xl  ml-auto mr-auto  max-h-[75vh] overflow-y-auto shadow-[0px_5px_7px_black] h-auto
+  @apply bg-[#353434]   max-h-[75vh] overflow-y-auto shadow-[0px_5px_7px_black] h-auto
 }
 
+ /* p-6 pb-5 */
 
+/* ml-auto mr-auto */
 
-
-
-
+/* max-w-2xl  */
+/* w-full   */
 
 
 

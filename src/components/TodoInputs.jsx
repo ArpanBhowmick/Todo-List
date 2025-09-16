@@ -28,8 +28,8 @@ const TodoInputs = () => {
   return (
     <>
       <form onSubmit={handleTodoAdd}>
-        <div className="flex items-center justify-center border-b border-gray-700 pb-6 mb-2 ">
-          <div className="todo-input-item">
+        <div className="flex items-center justify-between  border-b border-gray-700 pb-6 mb-2 ">
+          <div className="todo-input-item w-full">
             <label>Title</label>
             <input
               type="text"
@@ -39,7 +39,7 @@ const TodoInputs = () => {
             />
           </div>
 
-          <div className="todo-input-item">
+          <div className="todo-input-item w-full">
             <label>Description</label>
             <input
               type="text"
