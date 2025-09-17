@@ -4,6 +4,6 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: process.env.vercel ? "/" : "/TodoApp/",
+  base: process.env.VERCEL ? "/" : "/TodoApp/",
   plugins: [react(),  tailwindcss()],
 })
