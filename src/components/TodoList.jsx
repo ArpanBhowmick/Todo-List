@@ -10,7 +10,7 @@ const TodoList = () => {
   );
 
   if (visibleTodos.length === 0) {
-    return <p>No task here to do</p>;
+    return <p className="text-gray-500 text-center mt-4">No task to do </p>;
   }
 
   return (
